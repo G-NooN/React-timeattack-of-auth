@@ -3,6 +3,13 @@ import { Navigate, Outlet } from "react-router-dom";
 import Navigation from "../Navigation";
 
 const AuthLayout = () => {
+  const loginState = !!localStorage.getItem("accessToken");
+
+  if (!loginState) {
+    alert("로그인이 필요합니다");
+    return <Navigate to="/login" />;
+  }
+
   return (
     <div>
       <h1>Auth Layout</h1>
